@@ -14,8 +14,8 @@ module FlowdockRails
     end
 
     def post_message(message)
-      raise 'Instance is not ready' unless ready?
       return unless FlowdockRails.configuration.valid_env?
+      raise 'Instance is not ready' unless ready?
       params = format_params(message)
       response = post('/messages', params)
       message.thread_id = response.body['thread_id']
