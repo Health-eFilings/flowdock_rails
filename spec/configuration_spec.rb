@@ -24,5 +24,16 @@ describe FlowdockRails::Configuration do
       config.environments = %w(test development)
       expect(config.valid_env?).to be true
     end
+
+    it 'should deactivate using env var' do
+      ClimateControl.modify FLOWDOCK_ENABLED: 'false' do
+        config = FlowdockRails::Configuration.new
+        expect(config.active?).to be false
+      end
+    end
+
+    it 'should be active by default' do
+      expect(@config.active?).to be true
+    end
   end
 end

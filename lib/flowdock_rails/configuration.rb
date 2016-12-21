@@ -11,6 +11,10 @@ module FlowdockRails
       @environments.include?(ENV['RAILS_ENV'] || 'development')
     end
 
+    def active?
+      !(ENV['FLOWDOCK_ENABLED']&.downcase == 'false')
+    end
+
     def method_missing(m)
       return unless @sources[m]
       @sources[m]
