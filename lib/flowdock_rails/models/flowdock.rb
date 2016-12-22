@@ -14,13 +14,18 @@ module FlowdockRails
     end
 
     def post_message(message)
-      return unless FlowdockRails.configuration.valid_env?
+      return unless enabled?
       raise 'Instance is not ready' unless ready?
       params = format_params(message)
       response = post('/messages', params)
       message.thread_id = response.body['thread_id']
       message.sent
       message
+    end
+
+    def enabled?
+      FlowdockRails.configuration.valid_env? &&
+        FlowdockRails.configuration.active?
     end
 
     private

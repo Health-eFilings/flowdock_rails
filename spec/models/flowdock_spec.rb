@@ -61,4 +61,11 @@ describe FlowdockRails::Flowdock do
 
     expect(instance.post_message(1)).to be_nil
   end
+
+  it 'should not post message if flowdock is not enabled' do
+    ClimateControl.modify FLOWDOCK_ENABLED: 'false' do
+      instance = FlowdockRails::Flowdock.new(:test1)
+      expect(instance.post_message(nil)).to be_nil
+    end
+  end
 end
