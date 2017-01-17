@@ -1,0 +1,32 @@
+# Defaults at https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+Rails:
+  Enabled: true
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.3
+
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/LambdaCall:
+  Enabled: false
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Style/MultilineOperationIndentation:
+  EnforcedStyle: indented
+Style/NumericLiterals:
+  Enabled: false
+Style/MultilineBlockChain:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 25 # from 15
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 15 # from 10
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
