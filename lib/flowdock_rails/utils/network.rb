@@ -6,7 +6,7 @@ module FlowdockRails
       def connection
         @conn ||= Faraday.new(url: 'https://api.flowdock.com') do |conn|
           conn.request  :url_encoded
-          conn.response :logger
+          conn.response :logger unless $stdout.isatty
           conn.response :json
           conn.adapter  Faraday.default_adapter
         end
