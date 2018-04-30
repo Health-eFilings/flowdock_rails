@@ -2,7 +2,8 @@ module FlowdockRails
   # Create a message you can apply markdown to text multile line
   # text
   class Message
-    attr_accessor :thread_id, :text, :tags, :lines
+    attr_accessor :thread_id, :tags, :lines
+    attr_writer :text
     def initialize(attributes = {})
       @thread_id = attributes[:thread_id]
       @text = attributes[:text]
